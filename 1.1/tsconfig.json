@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    // Базовый путь для абсолютных импортов
+    "baseUrl": ".",
+    // Алиасы для путей (например @/components → src/components)
+    "paths": {
+      "@src/*": [ "src/*" ],
+    },
+    // Целевая версия ECMAScript
+    "target": "ESNext",
+    // Используемые библиотеки
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    // Система модулей
+    "module": "ESNext",
+    // Не проверять типы в файлах .d.ts
+    "skipLibCheck": true,
+    // Стратегия разрешения модулей
+    "moduleResolution": "node",
+    "allowJs": true,
+    // Разрешать импорт с расширением .ts
+    "allowImportingTsExtensions": true,
+    // Разрешать импорт JSON файлов
+    "resolveJsonModule": true,
+    // Транспилировать каждый файл как отдельный модуль
+    "isolatedModules": true,
+    // Не генерировать выходные файлы (только проверка типов)
+    "noEmit": true,
+    // Режим JSX (автоматически импортирует jsx-runtime)
+    "jsx": "react",
+    // Строгая проверка типов
+    "strict": true,
+    // Ошибка при неиспользуемых переменных
+    "noUnusedLocals": true,
+    // Ошибка при неиспользуемых параметрах функций
+    "noUnusedParameters": true,
+    // Ошибка при отсутствии break в case (защита от fallthrough)
+    "noFallthroughCasesInSwitch": true,
+    // Более совместимый режим работы с CommonJS модулями
+    "esModuleInterop": true,
+    // Запрещать разный регистр в именах файлов при импорте
+    "forceConsistentCasingInFileNames": true
+  },
+  
+  // Включаемые файлы для проверки
+  "include": ["src"],
+  // Исключаемые папки
+  "exclude": ["node_modules"]
+}
