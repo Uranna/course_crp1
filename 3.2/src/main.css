@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.wrapper {
+  @apply w-[1280px] mx-auto py-8 px-4;
+}
+
+.header {
+  @apply text-[32px] leading-[38px] font-bold mb-8;
+}
+
+.cards__wrapper {
+  @apply grid grid-cols-2 gap-4;
+}
+
+@theme {
+  --color-primary-500: #36cfc9;
+}
