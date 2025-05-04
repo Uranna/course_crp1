@@ -1,13 +1,33 @@
-import { rest } from 'msw';
+import { http, HttpResponse, rest } from 'msw';
+import { BASE_URL, TODOS } from './constants'
+
+let todos = [...TODOS];
 
 export const handlers = [
-  rest.get('https://api.example.com/todos', (req, res, ctx) => {
-    return res(
-      ctx.delay(100),
-      ctx.json([
-        { id: 1, text: 'Mocked todo', completed: false }
-      ])
-    );
+  http.get(BASE_URL, () => {
+    return HttpResponse.json([...todos], {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }),
-  // Добавьте другие моки API по аналогии
+
+  http.post(BASE_URL, async ({ request }) => {
+    const { text } = await request.json();
+
+    if (!text) {
+      return HttpResponse.json(
+        { error: 'Text is required' },
+        { status: 400 },
+      );
+    }
+
+    const newTodo = { id: Date.now(), text, completed: false };
+    todos.push(newTodo)
+    return HttpResponse.json(
+      newTodo,
+      { status: 201 },
+    )
+  }),
 ];
